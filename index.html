@@ -1,0 +1,85 @@
+
+<!-- CryptoJS es una colección de algoritmos criptográficos implementados en JavaScript. 
+    Incluye los siguientes códigos: AES-128, AES-192, AES-256, DES, Triple DES, Conejo, RC4, 
+    RC4Drop y hashers: MD5, RIPEMD-160, SHA-1, SHA-256, SHA-512, SHA -3 con 224, 256, 
+    384 o 512 bits. -->
+<!DOCTYPE html>
+<html>
+  <title>RSA</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Raleway"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+
+  <style>
+    body,
+    h1 {
+      font-family: "Raleway", Arial, sans-serif;
+    }
+
+    h1 {
+      letter-spacing: 6px;
+    }
+
+    .w3-row-padding img {
+      margin-bottom: 12px;
+    }
+  </style>
+
+  <body>
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-content" style="max-width: 1500px">
+      <!-- Header -->
+      <header class="w3-panel w3-center w3-opacity" style="padding: 128px 16px">
+        <h1 class="w3-xlarge">RSA</h1>
+      </header>
+
+      <div class="w3-row-padding" style="margin-bottom: 128px">
+        <div class="w3-center">
+          <br />Texto a cifrar:<input id="text" type="text" value="Equipo alfa buena maravilla onda dinamita escuadrón lobo" />
+
+          <br />password:<input id="pass" type="text" value="mimir" />
+
+          <br /><button onclick="encrypt()">Encriptar</button>
+
+          <br />Texto ecnriptado:<br /><span id="result"></span>
+
+          
+
+          <br /><button onclick="decrypt()">Desencriptar</button>
+          <br />Texto original:<br /><span id="decrypted"></span>
+        </div>
+      </div>
+
+      <!-- End Page Content -->
+    </div>
+  </body>
+  <script>
+    //   Ejemplo de uso
+    //   var encrypted = CryptoJS.AES.encrypt ("Mensaje", "Frase de contraseña secreta"); 
+    // var descifrado = CryptoJS.AES.decrypt (cifrado, "Frase de contraseña secreta");
+    // https://code.google.com/archive/p/crypto-js/
+    function encrypt(){
+
+        
+     var encrypted = CryptoJS.AES.encrypt(document.getElementById("text").value, document.getElementById("pass").value);   
+        document.getElementById("result").innerHTML = encrypted;
+        document.getElementById("decrypted").innerHTML = '';
+    }        
+    
+    function decrypt(){
+     var decrypted = CryptoJS.AES.decrypt(document.getElementById("result").innerHTML, document.getElementById("pass").value).toString(CryptoJS.enc.Utf8);
+        document.getElementById("decrypted").innerHTML = decrypted;
+        document.getElementById("result").innerHTML = '';
+    }        
+    
+    </script>
+</html>
